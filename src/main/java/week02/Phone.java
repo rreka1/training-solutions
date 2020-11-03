@@ -31,21 +31,26 @@ public class Phone {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
+        String type;
+        int mem;
+
         System.out.println("Phone1 type:");
-        String type = scanner.nextLine();
+        type = scanner.nextLine();
         System.out.println("Phone1 memory:");
-        int mem = scanner.nextInt();
+        mem = scanner.nextInt();
         scanner.nextLine();
 
         Phone phone1 = new Phone(type, mem);
+
         System.out.println("Phone2 type:");
         type = scanner.nextLine();
         System.out.println("Phone2 memory:");
         mem = scanner.nextInt();
+
         Phone phone2 = new Phone(type, mem);
 
-        System.out.println("Phone1 " + phone1.getType() + " " + phone1.getMem() + " GB");
-        System.out.println("Phone2 " + phone2.getType() + " " + phone2.getMem() + " GB");
+        System.out.println("Phone1: " + phone1.getType() + " " + phone1.getMem() + " GB");
+        System.out.println("Phone2: " + phone2.getType() + " " + phone2.getMem() + " GB");
 
     }
 }
