@@ -20,7 +20,7 @@ public class Product {
 
     public boolean areTheyEqual(Product p) {
 
-        if(this.name.equals(p.name) && (this.code.length()-p.code.length()  <= Math.abs(1) )) {
+        if(this.name.equals(p.name) && (  Math.abs(this.code.length()-p.code.length()) <= 1 )) {
             return true;
         } else {
             return false;
@@ -31,8 +31,8 @@ public class Product {
 
         Product p1 = new Product("valami", "367245");
         Product p2 = new Product("valami2", "28378394798");
-        Product p3 = new Product("valami2", "874837");
-        Product p4 = new Product("valami2", "8748371");
+        Product p3 = new Product("valami2", "8748371");
+        Product p4 = new Product("valami2", "874837");
 
         System.out.println("p1 és p2 egyenlő? " + p1.areTheyEqual(p2));
         System.out.println("p1 és p3 egyenlő? " + p1.areTheyEqual(p3));
