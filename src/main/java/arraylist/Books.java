@@ -33,6 +33,21 @@ public class Books {
         return books;
     }
 
+    public void removeByPrefix(String prefix) {
+
+        List<String> remove = new ArrayList<>();
+
+        for (String book: books) {
+
+            if(book.startsWith(prefix)) {
+
+                //books.remove(book); ConcurrentModificationException
+                remove.add(book);
+            }
+        }
+        books.removeAll(remove);
+    }
+
     //...
     public static void main(String[] args) {
 
@@ -46,6 +61,9 @@ public class Books {
         System.out.println(books.getTitles());
 
         System.out.println(books.findAllByPrefix("Egri"));
+
+        books.removeByPrefix("Egri");
+        System.out.println(books.getTitles());
 
     }
 }
