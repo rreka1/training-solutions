@@ -39,4 +39,9 @@ public class SocialNetwork {
         }
         return foundMember;
     }
+
+    @Override
+    public String toString() {
+        return members.toString();
+    }
 }

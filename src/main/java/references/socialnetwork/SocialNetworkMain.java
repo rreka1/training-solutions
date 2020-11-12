@@ -12,5 +12,6 @@ public class SocialNetworkMain {
         socialNetwork.connect("Joe", "John");
         socialNetwork.connect("John", "Joe");
         System.out.println(socialNetwork.bidirectionalConnections());
+        System.out.println(socialNetwork);
     }
 }
