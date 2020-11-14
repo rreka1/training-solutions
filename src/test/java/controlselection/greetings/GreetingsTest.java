@@ -1,4 +1,4 @@
-package controlselection;
+package controlselection.greetings;
 
 import controlselection.greetings.Greetings;
 import org.junit.jupiter.api.Test;
