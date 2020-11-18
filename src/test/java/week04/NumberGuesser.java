@@ -11,8 +11,9 @@ public class NumberGuesser {
         System.out.println("Találd ki a számot (1-100-ig)!");
         Scanner scanner = new Scanner(System.in);
         int guess = scanner.nextInt();
+        int limit = 7;
 
-        while(guess != number) {
+        while(guess != number && limit > 1) {
             if(guess < number) {
                 System.out.println("Ennél nagyobb szám!");
             }
@@ -20,7 +21,13 @@ public class NumberGuesser {
                 System.out.println("Ennél kisebb szám!");
             }
             guess = scanner.nextInt();
+            limit--;
         }
-        System.out.println("Gratulálok, kitaláltad!");
+        if(guess == number){
+            System.out.println("Gratulálok, kitaláltad!");
+        }
+        else {
+            System.out.println("Game over!");
+        }
     }
 }
