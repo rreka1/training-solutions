@@ -38,6 +38,10 @@ public class Transaction {
         return status;
     }
 
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
     public boolean isCredit() {
         return transactionOperation == TransactionOperation.CREDIT;
     }
