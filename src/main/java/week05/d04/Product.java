@@ -48,9 +48,9 @@ public class Product {
 
     public double convertPrice(CurrencyType currency) {
         double convertedPrice = 0.0;
-        if (currency.equals(CurrencyType.USD)) {
+        if (currency.equals(CurrencyType.USD) && this.currency.equals(CurrencyType.HUF)) {
             convertedPrice = this.price / 300.0;
-        } else if (currency.equals(CurrencyType.HUF)) {
+        } else if (currency.equals(CurrencyType.HUF) && this.currency.equals(CurrencyType.USD)) {
             convertedPrice = this.price * 300.0;
         }
         BigDecimal bd = new BigDecimal(convertedPrice).setScale(1, RoundingMode.HALF_UP);
