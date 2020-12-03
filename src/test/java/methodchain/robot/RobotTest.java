@@ -39,11 +39,11 @@ public class RobotTest {
     }
 
     //Bónusz feladat tesztje, kommentezd ki az alapfeladathoz
-    /*@Test
+    @Test
     public void testNavigationChain() {
         //When
         robot.go(5).rotate(45).registerNavigationPoint().go(10).rotate(-15).registerNavigationPoint();
         //Then
         assertEquals("[distance: 5 azimut: 45, distance: 15 azimut: 30]", robot.getNavigationList().toString());
-    }*/
+    }
 }
