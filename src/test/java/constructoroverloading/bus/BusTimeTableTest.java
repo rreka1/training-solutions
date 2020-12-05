@@ -17,6 +17,7 @@ public class BusTimeTableTest {
             new SimpleTime(14, 15),
             new SimpleTime(16, 15),
             new SimpleTime(18, 15)
+
     );
 
     @Test
@@ -56,5 +57,11 @@ public class BusTimeTableTest {
             timetable.nextBus(new SimpleTime(18, 16));
         });
         assertEquals("No more buses today!", ex.getMessage());
+    }
+
+    @Test
+    public void testFirstBus() {
+        BusTimeTable timeTable = new BusTimeTable(TIME_TABLE);
+        assertEquals("9:15", timeTable.firstBus().toString());
     }
 }
