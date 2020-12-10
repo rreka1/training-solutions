@@ -8,6 +8,6 @@ public class ShoppingListTest {
 
     @Test
     public void testCalculateSum() {
-        assertEquals(1120, new ShoppingList().calculateSum("shoppinglist.txt"));
+        assertEquals(1120, new ShoppingList().calculateSum("src/main/java/week07d04/shoppinglist.txt"));
     }
 }
