@@ -19,6 +19,7 @@ public class SaveInput {
     public List<String> readLines() {
         List<String> lines = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
+            System.out.print(i + 1 + ": ");
             String line = scanner.nextLine();
             lines.add(line);
         }
@@ -26,6 +27,7 @@ public class SaveInput {
     }
 
     public Path readFilename() {
+        System.out.println("Filename: ");
         String filename = scanner.nextLine();
         Path path = Path.of(filename);
         return path;
@@ -37,6 +39,14 @@ public class SaveInput {
         } catch (IOException ioe) {
             throw new IllegalStateException("Can not write!", ioe);
         }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        SaveInput saveInput = new SaveInput(scanner);
+        List<String> lines = saveInput.readLines();
+        Path file = saveInput.readFilename();
+        saveInput.write(file, lines);
     }
 
     /*
