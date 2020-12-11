@@ -1,6 +1,5 @@
 package week07d05;
 
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -10,6 +9,37 @@ import java.util.Scanner;
 
 public class SaveInput {
 
+    private Scanner scanner;
+
+    //Dependency Injection
+    public SaveInput(Scanner scanner) {
+        this.scanner = scanner;
+    }
+
+    public List<String> readLines() {
+        List<String> lines = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            String line = scanner.nextLine();
+            lines.add(line);
+        }
+        return lines;
+    }
+
+    public Path readFilename() {
+        String filename = scanner.nextLine();
+        Path path = Path.of(filename);
+        return path;
+    }
+
+    public void write(Path path, List<String> lines) {
+        try {
+            Files.write(path, lines);
+        } catch (IOException ioe) {
+            throw new IllegalStateException("Can not write!", ioe);
+        }
+    }
+
+    /*
     public static final Path OUTPUT = Path.of("src/main/java/week07d05/output.txt");
     List<String> inputLines = new ArrayList<>();
 
@@ -39,4 +69,5 @@ public class SaveInput {
         saveInput.readLines(3);
         saveInput.writeLines();
     }
+    */
 }
