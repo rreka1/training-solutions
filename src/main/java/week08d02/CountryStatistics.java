@@ -47,9 +47,4 @@ public class CountryStatistics {
             countries.add(new Country(countryName, population, numOfColors, numOfNeighbours));
         }
     }
-
-    public static void main(String[] args) {
-        CountryStatistics cs = new CountryStatistics();
-        System.out.println(cs.maxPopulation());
-    }
 }
