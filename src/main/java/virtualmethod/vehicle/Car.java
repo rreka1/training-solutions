@@ -2,11 +2,11 @@ package virtualmethod.vehicle;
 
 public class Car extends Vehicle {
 
-    private int numberOfPassenger;
+    protected int numberOfPassenger;
 
-    public Car(int vehicleWeight, int numberPassenger) {
+    public Car(int vehicleWeight, int numberOfPassenger) {
         super(vehicleWeight);
-        this.numberOfPassenger = numberPassenger;
+        this.numberOfPassenger = numberOfPassenger;
     }
 
     public int getNumberOfPassenger() {
