@@ -6,11 +6,9 @@ public class DivisorFinder {
         int numOfDivisors = 0;
         String number = Integer.toString(n);
         for (int i = 0; i < number.length(); i++) {
-            int num = Integer.parseInt(number.substring(i, i + 1));
-            if (num != 0) {
-                if (n % num == 0) {
-                    numOfDivisors++;
-                }
+            int digit = Integer.parseInt(Character.toString(number.charAt(i)));
+            if (digit != 0 && n % digit == 0) {
+                numOfDivisors++;
             }
         }
         return numOfDivisors;
