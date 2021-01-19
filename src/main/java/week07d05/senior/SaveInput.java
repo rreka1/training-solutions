@@ -1,4 +1,4 @@
-package week07d05;
+package week07d05.senior;
 
 import java.io.IOException;
 import java.nio.file.Files;

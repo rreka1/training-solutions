@@ -2,6 +2,7 @@ package week07d05;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
+import week07d05.senior.SaveInput;
 
 import java.io.IOException;
 import java.nio.file.Files;
