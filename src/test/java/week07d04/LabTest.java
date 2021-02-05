@@ -38,7 +38,7 @@ public class LabTest {
     public void testCompleteNow() {
         Lab lab = new Lab("Java SE haladó");
         lab.complete();
-        assertEquals("Java SE haladó: completed at 2020-12-10", lab.toString());
+        assertEquals("Java SE haladó: completed at " + LocalDate.now(), lab.toString());
     }
 
     @Test
@@ -68,8 +68,8 @@ public class LabTest {
     @Test
     public void testInvalidDate_2() {
         Exception ex = assertThrows(IllegalArgumentException.class, () -> {
-            new Lab("Java SE alapok", LocalDate.of(2020, 12, 11));
+            new Lab("Java SE alapok", LocalDate.of(2030, 12, 11));
         });
-        assertEquals("Invalid date! 2020-12-11", ex.getMessage());
+        assertEquals("Invalid date! 2030-12-11", ex.getMessage());
     }
 }

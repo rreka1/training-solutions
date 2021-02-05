@@ -29,10 +29,10 @@ public class ResultCalculatorTest {
     @BeforeEach
     public void initFiles() throws IOException {
         talentsFile = new File(folder, "test.txt").toPath();
-        Files.copy(ResultCalculatorTest.class.getResourceAsStream("/talents.txt"), talentsFile, StandardCopyOption.REPLACE_EXISTING);
+        Files.copy(ResultCalculatorTest.class.getResourceAsStream("talents.txt"), talentsFile, StandardCopyOption.REPLACE_EXISTING);
 
         votesFile = new File(folder, "test2.txt").toPath();
-        Files.copy(ResultCalculatorTest.class.getResourceAsStream("/votes.txt"), votesFile, StandardCopyOption.REPLACE_EXISTING);
+        Files.copy(ResultCalculatorTest.class.getResourceAsStream("votes.txt"), votesFile, StandardCopyOption.REPLACE_EXISTING);
 
     }
 
