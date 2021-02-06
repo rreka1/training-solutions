@@ -7,9 +7,10 @@ import java.util.List;
 public class ShoppingListManager {
 
     public void saveShoppingList(OutputStream outputStream, List<String> shoppingList) {
-        try (OutputStreamWriter osw = new OutputStreamWriter(outputStream)) {
+        try (BufferedWriter osw = new BufferedWriter(new OutputStreamWriter(outputStream))) {
             for (String item : shoppingList) {
-                osw.write(item + "\n");
+                osw.write(item);
+                osw.newLine();
             }
         } catch (IOException ioe) {
             throw new IllegalStateException("Can not write file", ioe);
