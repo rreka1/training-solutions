@@ -1,0 +1,6 @@
+2021.01.13
+Junior/Mid-level
+
+Készíts egy WordFilter osztályt, melyben van egy List<String> wordsWithChar(List<String> words, char c) metódus.
+A metódus kiválogatja a paraméterül kapott String listából azokat a szavakat,
+melyekben előfordul a c karakter, majd ezeket visszaadja egy listában.
