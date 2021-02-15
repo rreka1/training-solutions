@@ -1,0 +1,24 @@
+2021.02.02
+Junior/Mid-level
+
+Adott egy fájl melyben online bevásárlások találhatók.
+A fájl a még ki nem szállított rendeléseket tartalmazza.
+Egy sorban egy egyedi azonosító és utána a termékek neve van felsorololva.
+Minden vásárlás legalább 2 termékből áll.
+
+A233 bread,tomato,flour,sugar
+A312 sugar,beer,apple,pear
+B3402 meet,soda,cola,bbq_sauce
+B341 pasta,passata,basil,cheese
+A10 corn,hot_dog,rolls
+CM231 beer,chips
+C123 pepper,salt,rosmary,pizza_dough,passata,oregano
+W34111 pasta,sugar,rosmary,cheese,meet,carrot,potato,tomato
+K8921 wine,soda
+
+Olvasd be a fájlt és tárold el az adatokat a memóriában, majd oldd meg a következő feladatokat.
+
+Egyedi azonosító alapján legyenek lekérdezhetőek a vásárolt termékek ABC sorrendben.
+Számoljuk össze, egy termék neve alapján, hogy abból a termékből mennyit adtak el.
+Adjuk vissza egy vásárlási azonosító alapján, hogy hány termék szerepel a vásárlásban.
+Készíts statisztikát melyben visszaadod, hogy az egyes termékek hányszor szerepelnek a fájlban.
