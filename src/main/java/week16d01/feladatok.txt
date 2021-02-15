@@ -1,0 +1,23 @@
+2021.02.15
+
+## Magánhangzók
+Írj egy VowelFilter.filterFowels(BufferedReader reader) metódust, mely beolvas egy
+fájlt soronként, kiszűri belőle a magánhangzókat, és visszaadja egy String-ként.
+
+Tehát a bemeneti fájl tartalma:
+
+Aprócska
+Kalapocska
+Benne
+Csacska
+Macska
+Mocska
+
+Kimenet Stringként:
+
+prcsk
+Klpcsk
+Bnn
+Cscsk
+Mcsk
+Mcsk
