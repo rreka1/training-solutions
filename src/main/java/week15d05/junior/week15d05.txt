@@ -1,0 +1,6 @@
+2021.02.12
+Junior/Mid-level
+
+Adott egy fájl a következő címen:
+https://raw.githubusercontent.com/TheMLGuy/Game-of-Thrones-Dataset/master/battles.csv
+Melyik ház vett részt a legtöbb csatában?
