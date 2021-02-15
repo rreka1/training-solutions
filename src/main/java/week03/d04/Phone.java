@@ -1,4 +1,4 @@
-package week03;
+package week03.d04;
 
 /*
  * Írj egy Phone oszályt, melynek van egy prefix és egy number String attribútuma!

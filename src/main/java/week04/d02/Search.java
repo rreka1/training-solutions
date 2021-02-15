@@ -1,4 +1,4 @@
-package week04;
+package week04.d02;
 
 /*
  * A Search osztályban írj egy getIndexesOfChar() metódust,

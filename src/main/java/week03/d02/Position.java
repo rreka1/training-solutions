@@ -1,4 +1,4 @@
-package week03;
+package week03.d02;
 
 /*
  * Írj egy Position osztályt, melynek van egy name és egy bonus attribútuma!

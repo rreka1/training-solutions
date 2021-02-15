@@ -1,6 +1,4 @@
-package week03;
-
-import operators.Operators;
+package week03.d05;
 
 public class Operation {
 
