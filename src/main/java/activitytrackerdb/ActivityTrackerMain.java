@@ -24,12 +24,28 @@ public class ActivityTrackerMain {
         }
     }
 
-    public Activity findById(DataSource dataSource, long id) {
+    /*public Activity findById(DataSource dataSource, long id) {
         try (Connection conn = dataSource.getConnection();
              PreparedStatement preStm = conn.prepareStatement("SELECT * FROM activities WHERE id = ?")
         ) {
             preStm.setLong(1, id);
             return selectActivityByPreparedStatement(preStm);
+        } catch (SQLException se) {
+            throw new IllegalStateException("Cannot connect!", se);
+        }
+    }
+
+    //1.
+    public List<Activity> listAllActivities(DataSource dataSource) {
+        List<Activity> activities = new ArrayList<>();
+        try (Connection conn = dataSource.getConnection();
+             Statement statement = conn.createStatement();
+             ResultSet resultSet = statement.executeQuery("SELECT id FROM activities ORDER BY id")
+        ) {
+            while (resultSet.next()) {
+                activities.add(findById(dataSource, resultSet.getLong("id")));
+            }
+            return activities;
         } catch (SQLException se) {
             throw new IllegalStateException("Cannot connect!", se);
         }
@@ -48,20 +64,47 @@ public class ActivityTrackerMain {
         } catch (SQLException se) {
             throw new IllegalStateException("Query execution failed!", se);
         }
+    }*/
+
+    //2.
+    public Activity findById(DataSource dataSource, long id) {
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement preStm = conn.prepareStatement("SELECT * FROM activities WHERE id = ?")
+        ) {
+            preStm.setLong(1, id);
+            List<Activity> result = selectActivityByPreparedStatement(preStm);
+            if (result.size() == 1) {
+                return result.get(0);
+            }
+            throw new IllegalArgumentException("Not found!");
+        } catch (SQLException se) {
+            throw new IllegalStateException("Cannot connect!", se);
+        }
     }
 
     public List<Activity> listAllActivities(DataSource dataSource) {
-        List<Activity> activities = new ArrayList<>();
         try (Connection conn = dataSource.getConnection();
-             Statement statement = conn.createStatement();
-             ResultSet resultSet = statement.executeQuery("SELECT id FROM activities ORDER BY id")
+             PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM activities");
         ) {
-            while (resultSet.next()) {
-                activities.add(findById(dataSource, resultSet.getLong("id")));
-            }
-            return activities;
+            return selectActivityByPreparedStatement(preparedStatement);
         } catch (SQLException se) {
             throw new IllegalStateException("Cannot connect!", se);
+        }
+    }
+
+    private List<Activity> selectActivityByPreparedStatement(PreparedStatement preparedStatement) {
+        List<Activity> result = new ArrayList<>();
+        try (ResultSet resultSet = preparedStatement.executeQuery()) {
+            while (resultSet.next()) {
+                long id = resultSet.getLong("id");
+                LocalDateTime startTime = resultSet.getTimestamp("start_time").toLocalDateTime();
+                String desc = resultSet.getString("activity_desc");
+                Type type = Type.valueOf(resultSet.getString("activity_type"));
+                result.add(new Activity(id, startTime, desc, type));
+            }
+            return result;
+        } catch (SQLException se) {
+            throw new IllegalStateException("Query execution failed!", se);
         }
     }
 
