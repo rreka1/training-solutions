@@ -6,7 +6,7 @@ CREATE TABLE activities (
 	PRIMARY KEY (id)
 );
 
-INSERT INTO activities(start_time, activity_desc, activity_type) VALUES('2021-06-12 12:22:00', 'Biking in Bükk', 'BIKING');
-INSERT INTO activities(start_time, activity_desc, activity_type) VALUES('2021-06-12 12:22:00', 'Hiking in Bükk', 'HIKING');
-INSERT INTO activities(start_time, activity_desc, activity_type) VALUES('2021-06-12 12:22:00', 'Biking in Mátra', 'BIKING');
+INSERT INTO activities(start_time, activity_desc, activity_type) VALUES('2021-02-12 12:22:00', 'Biking in Bükk', 'BIKING');
+INSERT INTO activities(start_time, activity_desc, activity_type) VALUES('2021-03-12 12:22:00', 'Hiking in Bükk', 'HIKING');
+INSERT INTO activities(start_time, activity_desc, activity_type) VALUES('2021-04-12 12:22:00', 'Biking in Mátra', 'BIKING');
 INSERT INTO activities(start_time, activity_desc, activity_type) VALUES('2021-06-12 12:22:00', 'Basketball', 'BASKETBALL');

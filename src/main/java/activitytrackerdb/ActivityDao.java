@@ -2,6 +2,7 @@ package activitytrackerdb;
 
 import javax.sql.DataSource;
 import java.sql.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -59,6 +60,19 @@ public class ActivityDao {
         try (Connection conn = dataSource.getConnection();
              PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM activities");
         ) {
+            return selectActivityByPreparedStatement(preparedStatement);
+        } catch (SQLException se) {
+            throw new IllegalStateException("Cannot connect!", se);
+        }
+    }
+
+    public List<Activity> listActivitiesBeforeDate(LocalDate date) {
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement preparedStatement = conn.prepareStatement(
+                     "SELECT * FROM activities WHERE start_time < ?");
+        ) {
+            //preparedStatement.setTimestamp(1, Timestamp.valueOf(LocalDateTime.of(date, LocalTime.of(0,0,0))));
+            preparedStatement.setTimestamp(1, Timestamp.valueOf(date.atTime(0, 0, 0)));
             return selectActivityByPreparedStatement(preparedStatement);
         } catch (SQLException se) {
             throw new IllegalStateException("Cannot connect!", se);
