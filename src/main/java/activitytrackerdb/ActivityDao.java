@@ -15,17 +15,29 @@ public class ActivityDao {
         this.dataSource = dataSource;
     }
 
-    public void saveActivity(Activity activity) {
+    public Activity saveActivity(Activity activity) {
         try (Connection conn = dataSource.getConnection();
              PreparedStatement preStm = conn.prepareStatement(
-                     "INSERT INTO activities(start_time, activity_desc, activity_type) values(?,?,?) ")
+                     "INSERT INTO activities(start_time, activity_desc, activity_type) values(?,?,?)",
+                     Statement.RETURN_GENERATED_KEYS)
         ) {
             preStm.setTimestamp(1, Timestamp.valueOf(activity.getStartTime()));
             preStm.setString(2, activity.getDesc());
             preStm.setString(3, activity.getType().toString());
             preStm.executeUpdate();
+            return getIdFromStatement(activity, preStm);
         } catch (SQLException se) {
             throw new IllegalStateException("Cannot insert!", se);
+        }
+    }
+
+    private Activity getIdFromStatement(Activity activity, PreparedStatement preStm) throws SQLException {
+        try (ResultSet resultSet = preStm.getGeneratedKeys()) {
+            if (resultSet.next()) {
+                long id = resultSet.getLong(1);
+                return new Activity(id, activity.getStartTime(), activity.getDesc(), activity.getType());
+            }
+            throw new IllegalStateException("Cannot get key!");
         }
     }
 
@@ -94,4 +106,18 @@ public class ActivityDao {
             throw new IllegalStateException("Query execution failed!", se);
         }
     }
+
+    /*public void saveActivity(Activity activity) {
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement preStm = conn.prepareStatement(
+                     "INSERT INTO activities(start_time, activity_desc, activity_type) values(?,?,?) ")
+        ) {
+            preStm.setTimestamp(1, Timestamp.valueOf(activity.getStartTime()));
+            preStm.setString(2, activity.getDesc());
+            preStm.setString(3, activity.getType().toString());
+            preStm.executeUpdate();
+        } catch (SQLException se) {
+            throw new IllegalStateException("Cannot insert!", se);
+        }
+    }*/
 }

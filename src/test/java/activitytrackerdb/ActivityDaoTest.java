@@ -37,6 +37,11 @@ class ActivityDaoTest {
     public void findActivityByIdTest() {
         Activity activity = activityDao.findActivityById(1);
         assertEquals(Type.BIKING, activity.getType());
+
+        //generalt azonosito lekerdezessel
+        Activity activity2 = new Activity(LocalDateTime.now(), "Biking in Mecsek", Type.BIKING);
+        Activity result = activityDao.saveActivity(activity2);
+        assertEquals(activity2.getDesc(), activityDao.findActivityById(result.getId()).getDesc());
     }
 
     @Test
