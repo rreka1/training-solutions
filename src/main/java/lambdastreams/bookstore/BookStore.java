@@ -2,6 +2,7 @@ package lambdastreams.bookstore;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class BookStore {
 
@@ -22,5 +23,9 @@ public class BookStore {
 
     public int getTotalValue() {
         return books.stream().reduce(0, (a, b) -> a + b.getPieces() * b.getPrice(), Integer::sum);
+    }
+
+    public List<Book> getByYearOfPublish(int year) {
+        return books.stream().collect(Collectors.groupingBy(Book::getYearOfPublish)).get(year);
     }
 }

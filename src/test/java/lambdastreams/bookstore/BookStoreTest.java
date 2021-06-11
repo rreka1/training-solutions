@@ -1,5 +1,6 @@
 package lambdastreams.bookstore;
 
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,6 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 public class BookStoreTest {
 
@@ -70,5 +72,27 @@ public class BookStoreTest {
         BookStore bookStore = new BookStore(Collections.emptyList());
 
         assertEquals(0, bookStore.getTotalValue());
+    }
+
+    @Test
+    public void getByYearOfPublish() {
+        BookStore bookStore = new BookStore(books);
+
+        assertEquals(2, bookStore.getByYearOfPublish(2017).size());
+        assertEquals(5700, bookStore.getByYearOfPublish(2017).get(0).getPrice());
+    }
+
+    @Test
+    public void getByYearOfPublishMissingYear() {
+        BookStore bookStore = new BookStore(books);
+
+        assertEquals(null, bookStore.getByYearOfPublish(2007));
+    }
+
+    @Test
+    public void getByYearOfPublishForEmptyList() {
+        BookStore bookStore = new BookStore(Collections.emptyList());
+
+        assertEquals(null, bookStore.getByYearOfPublish(2007));
     }
 }
